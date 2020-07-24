@@ -26,7 +26,7 @@ class UsersController extends Controller
     public function index()
     {
         $users=User::get();
-        dd($users);
+    
         return view('admin.users.index',compact('users'));
     }
 
