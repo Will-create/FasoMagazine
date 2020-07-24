@@ -10,7 +10,16 @@
                 <div class="card-body">
                     <div class="list-group">
                         @foreach($users as $user)
-                         <li class="list-item">{{$user->name}}-{{$user->email}}</li>
+                            <li class="list-item">{{$user->name}}-{{$user->email}}</li>
+                            <ol>
+                            
+                            @foreach($user->roles as $user->role)
+                                <li class="list-item">-------{{$user->role->nom}}</li>
+                        
+                        
+                    
+                             @endforeach
+                            </ol>
                         
                         @endforeach
                 
