@@ -14,7 +14,7 @@
                             <ol>
                             
                             @foreach($user->roles as $user->role)
-                                <li class="list-item">-------{{$user->role->nom}}</li>
+                                <li class="list-item">-------{{$user->role->name}}</li>
                         
                         
                     
