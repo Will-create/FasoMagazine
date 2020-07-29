@@ -1,18 +1,20 @@
 
-@include('include.head')
+@extends('layouts.app')
 
-<br>
-<br>
-<br>
-<section id="main-content">
- <h2><strong> Enregistrer une categorie</strong> </strong></h2>
+@section('content')
+
+
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6"><h2><strong> ENREGISTRER UNE CATEGORIE </strong> </strong></h2></div>
+<div class="col-3"></div>
+
  <br>
-<div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                
-                <div class="card-body">
-                <form method="post" action="/categories" enctype="multipart/form-data">
+<div class="row">
+<div class="col-3"></div>
+        
+<div class="col-6">
+<form method="post" action="/categories" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group ">
                 <label for="0" >Nom</label>
@@ -23,13 +25,14 @@
                         </span>
                     @endif
                     </div>
-                    </div>
+                
 <button type="submit" class="btn btn-primary">
     Enregistrer
 </button>
 </form>
+
 </div>
+
+<div class="col-3"></div>
 </div>
-</div>
-</div>
-@include('include.foot')
+@endsection

@@ -58,8 +58,8 @@
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Contact</h4>
           <ul class="list-unstyled">
-            <li><a href="{{route('categories.index)}}" class="text-white">liste des categorie</a></li>
-            <li><a href="{{route('categories.create)}}" class="text-white">enregistrer une categorie </a></li>
+            <li><a href="{{route('categories.index')}}" class="text-white">liste des categorie</a></li>
+            <li><a href="{{route('categories.create')}}" class="text-white">enregistrer une categorie </a></li>
             <li><a href="#" class="text-white">Email me</a></li>
           </ul>
         </div>
