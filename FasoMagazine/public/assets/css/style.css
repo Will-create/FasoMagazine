@@ -1,0 +1,20 @@
+.titre{
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.centre{
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+}
+.foter{
+   height:50px; 
+}
+.cont{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25vh;
+    margin-top: 10vh;
+}

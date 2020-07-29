@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/categories', 'CategoriesController');
+Route::resource('/provinces', 'ProvincesController');
+Route::resource('/regions', 'RegionsController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
