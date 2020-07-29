@@ -8,23 +8,31 @@
                 <div class="card-header">Liste des Utilisateurs</div>
 
                 <div class="card-body">
-                    <div class="list-group">
-                        @foreach($users as $user)
-                            <li class="list-item">{{$user->name}}-{{$user->email}}</li>
-                            <ol>
-                            
-                            @foreach($user->roles as $user->role)
-                                <li class="list-item">-------{{$user->role->name}}</li>
-                        
-                        
-                    
-                             @endforeach
-                            </ol>
-                        
-                        @endforeach
-                
-                
-                    </div>
+                <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead class="entete">
+        <th>Numero</th>
+        <th>NOM</th>
+        <th>EMAil</th>
+        <th>Roles</th>
+        </thead>
+        <tbody>
+        <?php $i=0; ?>
+        @foreach($users as $user)
+        <?php $i++; ?>
+        <tr>
+        <td>{{$i}}</td>
+        <td>{{$user->name}}</td>
+        <td>{{$user->email}}</td>
+        <td>@foreach($user->roles as $user->role) <li>{{$user->role->name}}</li>@endforeach </td>
+
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
+    </div>
+    
+    
                    
                 </div>
             </div>
