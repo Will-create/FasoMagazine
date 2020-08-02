@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Categorie;
 use App\News;
 
@@ -17,7 +18,7 @@ class CategoriesController extends Controller
     {
         $categories=Categorie::get();
         $news=News::all();
-       return view('categories.liste',compact('categories','news'));
+       return view('admin.users.categories.index',compact('categories','news'));
     }
 
     /**
@@ -28,8 +29,8 @@ class CategoriesController extends Controller
     public function create()
     {
         $categories=Categorie::get();
-        $news=News::all();
-       return view('categories.form',compact('categories','news'));
+     
+       return view('admin.users.categories.form',compact('categories','news'));
     }
 
     /**
@@ -48,7 +49,7 @@ class CategoriesController extends Controller
           $categorie=Categorie::create([        
               'nom'=>$data[ 'nom'],                   
            ]);
-              return redirect()->route('categories.index');
+              return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -59,7 +60,9 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $cat=Categorie::find($id);
+        $categories=Categorie::get();
+        return view('admin.users.categories.show',compact('cat','categories'));
     }
 
     /**
@@ -70,7 +73,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cat=Categorie::find($id);
+        return view('admin.users.categories.edit',compact('cat'));
     }
 
     /**
@@ -82,7 +86,15 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categorie=Categorie::find($id);
+        $data=request()->validate([
+            'nom'=> ['required'],
+           
+         
+          ]);
+      
+          $categorie->update($data);
+              return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -93,6 +105,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cat=Categorie::find($id);
+        $cat->delete();
+        return redirect()->route('admin.categories.index');
     }
 }

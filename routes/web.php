@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/categories', 'CategoriesController');
-Route::resource('/provinces', 'ProvincesController');
-Route::resource('/regions', 'RegionsController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -29,6 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
     Route::resource('users','UsersController');
+
+
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::resource('categories','CategoriesController');
 
 
 });
