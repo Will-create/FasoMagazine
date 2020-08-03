@@ -17,6 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::get('/', 'NewsController@index')->name('accueil');
+
+Route::get('/cat/{categorie}/{id}', 'NewsController@filtre')->name('filtre');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -36,6 +42,19 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 });
 
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::resource('provinces','ProvincesController');
+
+
+});
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::resource('regions','RegionsController');
+
+
+});
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
     Route::resource('news','NewsController');

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\News;
+use App\Categorie;
 
 class NewsController extends Controller
 {
@@ -13,7 +15,18 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+       $categories=Categorie::get() ;
+       $news=News::get();
+
+       return view('mesvues.index',compact('categories','news'));
+    }
+
+    public function filtre( string $categorie, int $id)
+    {
+        $categories=Categorie::get();
+        $news=News::where('categorie_id',$id)->get();
+       
+       return view('mesvues.index',compact('categories','news'));
     }
 
     /**

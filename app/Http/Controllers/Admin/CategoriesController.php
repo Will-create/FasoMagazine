@@ -29,6 +29,7 @@ class CategoriesController extends Controller
     public function create()
     {
         $categories=Categorie::get();
+           $news=News::all();
      
        return view('admin.users.categories.form',compact('categories','news'));
     }

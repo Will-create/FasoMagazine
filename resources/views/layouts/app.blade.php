@@ -65,6 +65,9 @@
                                         @csrf
                                     </form>
                                     <a href="{{route('admin.users.index')}}" class="dropdown-item">liste des utilisateur</a>
+                                    <a href="{{route('admin.categories.index')}}" class="dropdown-item">liste des categories</a>
+                                    <a href="{{route('admin.provinces.index')}}" class="dropdown-item">liste des provinces</a>
+                                    <a href="{{route('admin.regions.index')}}" class="dropdown-item">liste des regions</a>
                                 </div>
                             </li>
                         @endguest
