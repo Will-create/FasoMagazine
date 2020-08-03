@@ -21,7 +21,6 @@ class RegionTableSeeder extends Seeder
             ['Centre-Nord','Kaya'],
             ['Centre-Ouest','Koudougou'],
             ['Centre-Sud','Manga'],
-            ['Centre-Nord','Kaya'],
             ['Est','Fada N\'gourma'],
             ['Haut-Bassins','Bobo-Dioulasso'],
             ['Nord','Ouahigouya'],

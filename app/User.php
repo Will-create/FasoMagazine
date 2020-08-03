@@ -46,6 +46,10 @@ class User extends Authenticatable
 
      return $this->roles()->where('name','admin')->first();
     }
+    public function isAuteur(){
+
+        return $this->roles()->where('name','reporter')->first();
+       }
 
     public function index(){
             

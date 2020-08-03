@@ -19,7 +19,9 @@ class CreateNewsTable extends Migration
             $table->string('body');
             $table->string('image');
             $table->integer('user_id');
+            $table->integer('auteur_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('auteur_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('categorie_id');
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
             $table->integer('region_id');
