@@ -35,3 +35,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 
 });
+
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+
+    Route::resource('news','NewsController');
+
+
+});
