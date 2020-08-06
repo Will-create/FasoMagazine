@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/a', function () {
     return view('welcome');
 });
 
@@ -61,3 +61,6 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
 
 });
+
+Route::get('/2', 'NewsLetterController@create');
+Route::post('/2', 'NewsLetterController@store');
