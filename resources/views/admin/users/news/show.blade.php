@@ -1,50 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-4"><button class="btn btn-light"><a href="{{route('admin.categories.index')}}">Liste des categories</a></button></div>
-    <h3>Details Categories</h3>
-    <div class="col-4"></div>
-</div>
-<div class="row ml-4">
-    
-    <div class="col-3 ">
-        <h4>Liste des Categories</h4>
-        <ul class="list-group">
-           @foreach($categories as $categorie)
 
-           <a class="btn btn-light" href="{{route('admin.categories.show',['category'=>$categorie->id])}}">
-                <li class="list-group-item {{$categorie->id == $cat->id ? 'active': ''}}">{{$categorie->nom}}</li>
-            </a>
-           @endforeach
-        </ul>
-    </div>
-    <div class="col-6">
-    <h4>Liste des Nouvelles de la categorie : {{$cat->nom}}</h4><br>
-    <div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead class="entete">
-        <th>N°</th>
-        <th>Titre</th>
-        <th>Province</th>
-        <th>Region</th>
-        <th>Image</th>
-        <th>Contenu</th>
-        </thead>
-        <tbody>
-        <?php $i=0; ?>
-        @foreach($categories as $categorie)
-        <?php $i++; ?>
-        <tr>
-        <td>{{$i}}</td>
+<section id="main-content">
+
+        <div class="section-title"  style="max-width: 540px;">
+ 
+          <h3><strong>{{$new->topic}} </strong></strong></h3>
+          <h3><strong>{{$new->body}}</strong></strong></h3>
+        </div>
         
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
+        <div class="card md-12" style="max-width: 960px;">
+        <div class="col-lg-3 align-items-center" data-aos="fade-left">
+            
+        <img src="{{asset('storage').'/'.$new->image}}" style="width:200px;height:200px;" class="bf5 "> 
+                        
+          </div>
+          <div class="col-lg-6 col-md-6 pt-6 pt-lg-6" data-aos="fade-right">
+              <h6><p class="card-text"><strong>user    : </strong>{{$new->user->name}}</p></h6>
+              <h6><p class="card-text"><strong>categorie        : </strong>{{$new->categorie->nom}}</p></h6>
+              <h6><p class="card-text"><strong>region         : </strong>{{$new->region->nom}}</p></h6>
+              <h6><p class="card-text"><strong>province       : </strong>{{$new->province->nom}}</p></h6>
+             
+            </div>                    
+        </div>
+  
+        <a href="{{route('admin.news.edit',['news'=>$new->id])}}" class="btn btn-warning">Editer</a>
     </div>
-    
-</div>
+</section>
 @endsection
 
 

@@ -108,30 +108,28 @@
 
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right">
-            <h2>Eum ipsam laborum deleniti velitena</h2>
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assum perenda sruen jonee trave</h3>
+          @foreach($news as $new)
+          <img src="{{asset('storage').'/'.$new->image}}" style="width:200px;height:200px;" class="bf5 border rounded-circle"> 
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left">
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
+            <p> {{$new->body}}</p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequa</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</li>
+              <li><i class="ri-check-double-line"></i>{{$new->topic}}</li>
+              <li><i class="ri-check-double-line"></i>{{$new->region->nom}}</li>
+              <li><i class="ri-check-double-line"></i>{{$new->province->nom}}</li>
             </ul>
-            <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
+            <p class="font-italic"> {{$new->body}} </p>
+            @endforeach
           </div>
+        
         </div>
-
+     
       </div>
     </section><!-- End About Us Section -->
-
+<br>
+<br>
+<br>
+<br>
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">

@@ -44,7 +44,7 @@ class CategoriesController extends Controller
     {
         $data=request()->validate([
             'nom'=> ['required'],
-           
+    
          
           ]);
           $categorie=Categorie::create([        
@@ -61,9 +61,10 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
+        $news=News::all();
         $cat=Categorie::find($id);
         $categories=Categorie::get();
-        return view('admin.users.categories.show',compact('cat','categories'));
+        return view('admin.users.categories.show',compact('news','cat','categories'));
     }
 
     /**

@@ -15,10 +15,11 @@ class NewsController extends Controller
      */
     public function index()
     {
+        $news=News::get();
        $categories=Categorie::get() ;
-       $news=News::get();
+    
 
-       return view('mesvues.index',compact('categories','news'));
+       return view('mesvues.index',compact('news','categories'));
     }
 
     public function filtre( string $categorie, int $id)

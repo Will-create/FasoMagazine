@@ -33,10 +33,15 @@
         </thead>
         <tbody>
         <?php $i=0; ?>
-        @foreach($categories as $categorie)
+        @foreach($news as $new)
         <?php $i++; ?>
         <tr>
         <td>{{$i}}</td>
+        <td>{{$new->topic}}</td>
+        <td>{{$new->province->nom}}</td>
+        <td>{{$new->region->nom}}</td>
+        <td>{{$new->image}}</td>
+        <td>{{$new->body}}</td>
         
         </tr>
         @endforeach

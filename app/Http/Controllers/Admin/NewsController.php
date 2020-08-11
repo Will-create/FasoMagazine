@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\News;
 use App\Region;
 use App\Province;
+use App\User;
 use App\Categorie;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,12 @@ class NewsController extends Controller
      */
     public function index()
     {
-        
-        $news=News::get();
-       return view('admin.users.news.index',compact('news'));
+        $news=News::all();
+        $users=User::get();
+        $categories=Categorie::get();
+        $regions=Region::get();
+        $provinces=Province::get();
+       return view('admin.users.news.index',compact('news','users','categories','regions','provinces'));
     }
 
     /**
@@ -28,13 +32,15 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(News $news)
     {
+        $news=News::all();
+        $users=User::get();
         $categories=Categorie::get();
         $regions=Region::get();
         $provinces=Province::get();
 
-        return view('admin.news.form',compact('categories','regions','provinces'));
+        return view('admin.users.news.form',compact('news','users','categories','regions','provinces'));
     }
 
     /**
@@ -43,9 +49,32 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(News $news)
     {
-        //
+        $data=request()->validate([
+            'topic'=> ['required','string'],
+            'body'=> ['required','string'],
+            'image'=> ['required','image'],
+            'user_id'=> ['required'],
+            'categorie_id'=> ['required'],
+            'region_id'=> ['required'],
+            'province_id'=> ['required'],
+        
+          ]);
+    
+          $imagePath=request('image')->store('uploads','public');
+          $new=News::create([
+              'topic'=>$data[ 'topic'],
+              'body'=>$data[ 'body'],
+              'image'=>$imagePath,
+              'user_id'=>$data[ 'user_id'],
+              'categorie_id'=>$data[ 'categorie_id'],
+              'region_id'=>$data[ 'region_id'],
+              'province_id'=>$data[ 'province_id'],
+         
+          
+              ]);      
+             return redirect()->route('admin.news.index');
     }
 
     /**
@@ -54,9 +83,14 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function show(News $news)
+    public function show($id)
     {
-        //
+        $new=News::find($id);
+        $users=User::get();
+        $categories=Categorie::get();
+        $regions=Region::get();
+        $provinces=Province::get();
+        return view('admin.users.news.show',compact('new','users','categories','regions','provinces'));
     }
 
     /**
@@ -65,9 +99,15 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(int $id)
     {
-        //
+        $new=News::find($id);
+        $users=User::get();
+        $categories=Categorie::get();
+        $regions=Region::get();
+        $provinces=Province::get();
+
+        return view('admin.users.news.edit',compact('new','users','categories','regions','provinces'));
     }
 
     /**
@@ -77,9 +117,21 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(News $news)
     {
-        //
+        $data=request()->validate([
+            'topic'=> ['required','string'],
+            'body'=> ['required','string'],
+            'image'=> ['required','image'],
+            'user_id'=> ['required'],
+            'categorie_id'=> ['required'],
+            'region_id'=> ['required'],
+            'province_id'=> ['required'],
+           
+          ]);
+      
+          $news->update($data);
+          return redirect()->route('admin.news.index');
     }
 
     /**
@@ -88,8 +140,10 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy($id)
     {
-        //
+        $new=News::find($id);
+        $new->delete();
+        return redirect()->route('admin.news.index');
     }
 }
